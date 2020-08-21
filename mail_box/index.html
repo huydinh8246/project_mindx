@@ -6,27 +6,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>index</title>
+    <style>
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .mr30 {
+            margin-right: 30px;
+        }
+        .clear {
+            clear: both;
+        }
+
+        .drop-content {
+            display: none;
+            position: absolute;
+            background-color: #E5E7E9;
+            min-width: 160px;
+        }
+
+        .dropdown:hover .drop-content {
+            display: block;
+        }
+
+        .dropdown {
+            padding: 20px;
+        }
+
+        /* .dropdown:hover .drop-btn {
+            background-color: aqua;
+        } */
+        .dropdown .drop-content div {
+            list-style-type: none;
+            float: none;
+        }
+
+        .navbar {
+            display: inline;
+            overflow: hidden;
+        }
+
+        .navbar h2 {
+            font-size: 16px;
+            margin-left: 40px;
+        }
+
+        .navbar span {
+            padding: 20px;
+        }
+
+        nav>span:first-child>i {
+            margin: 8px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
     <!-- dash board -->
     <header>
-        <div class=" ">
-            <span style="font-size: 30px"><i class="fas fa-ellipsis-h"></i></span>
-            <span style="font-size: 30px"><i class="fas fa-arrow-left"></i></span>
-            <h2>DASHBOARD</h2>
-            <!-- notice -->
-            <div>
-                <span style="font-size: 30px"><i class="fas fa-bell"></i></span>
-            </div>
-            <!-- setting -->
-            <div>
-                <span style="font-size: 30px"><i class="fas fa-sliders-h"></i></span>
-                
-            </div>
+        <div style="background-color: aqua; position: relative;">
+            <nav class="navbar">
+                <div style="width: 25%; float: left; padding:8px; background-color: #5DADE2;">
+                    <span style="font-size: 30px"><i class="fas fa-ellipsis-h fl" style="padding: 6px"></i></span>
+                    <img src="" alt="avatar" style="max-width: 30px; padding: 5px; margin-left: 20px;">
+                    <div class="info" style="display: none;">
+                        <p>name</p>
+                        <a href="#" style="font-size: 12px;padding-bottom: 10px;">huy@mail.com</a>
+                    </div>
+                </div>
+                <h2 class="fl" style="padding: 8px;">MAIL BOX</h2>
+                <!-- setting -->
+                <div class="dropdown fr mr30">
+                    <a class="drop-btn" href="#">
+                        <span style="font-size: 15px"><i class="fas fa-sliders-h"></i></span>
+                    </a>
+                    <div class="drop-content">
+                        <div><a href="#"></a>#</div>
+                        <div><a href="#"></a>#</div>
+                        <div><a href="#"></a>#</div>
+                        <div><a href="#"></a>#</div>
+                    </div>
+                </div>
+                <!-- notice -->
+                <div class="dropdown fr">
+                    <a href="#" class="drop-btn">
+                        <span style="font-size: 15px"><i class="fas fa-bell"></i></span>
+                    </a>
+                    <div class="drop-content">
+                        <div><a href="#"></a>#</div>
+                        <div><a href="#"></a>#</div>
+                        <div><a href="#"></a>#</div>
+                        <div><a href="#"></a>#</div>
+                    </div>
+                </div>
+                <!-- friend status (online/offline) -->
+                <span class="fr"></span>
+                <!-- clear -->
+                <div class="clear"></div>
+            </nav>
         </div>
     </header>
-    <div></div>
+
+    <div>
+        asdasdasd
+    </div>
     <link rel="stylesheet" href="fontawesome/css/fontawesome.css">
     <link rel="stylesheet" href="fontawesome/css/brands.css">
     <link rel="stylesheet" href="fontawesome/css/solid.css">
