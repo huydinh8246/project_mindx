@@ -7,3 +7,70 @@ body {
     width: 30px;
 }
 
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.mr30 {
+    margin-right: 30px;
+}
+.clear {
+    clear: both;
+}
+
+.drop-content {
+    display: none;
+    position: absolute;
+
+    min-width: 160px;
+    height: 20px;
+    margin: 22px;
+}
+
+.dropdown:hover .drop-content {
+    display: block;
+}
+
+.info{
+    display: none;
+}
+
+.info:hover {
+    display: block;
+}
+
+.dropdown {
+    padding: 20px;
+}
+
+/* .dropdown:hover .drop-btn {
+    background-color: aqua;
+} */
+.dropdown .drop-content div {
+    list-style-type: none;
+    float: none;
+    background-color: #A0B8C7;
+}
+
+.navbar {
+    display: inline;
+    overflow: hidden;
+}
+
+.navbar h2 {
+    font-size: 16px;
+    margin-left: 40px;
+}
+
+.navbar span {
+    padding: 20px;
+}
+
+nav>span:first-child>i {
+    margin: 8px;
+    cursor: pointer;
+}
