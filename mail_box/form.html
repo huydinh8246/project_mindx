@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div style="width: 500px ;padding: 0.01em 16px;margin-top: 16px;
         margin-bottom: 16px;">
-        <form >
+        <form>
             <div>
                 <label for="">TO</label>
                 <input type="text">
@@ -24,5 +26,15 @@
             <input class="" style="height:150px" placeholder="What's on your mind?">
         </form>
     </div>
+    <script>
+        "use strict";
+
+        fetch('mail.json')
+            .then((res) => {
+                return res.json()
+            }).then((data) => {
+                console.log(data)
+            })
+    </script>
 </body>
 </html>
