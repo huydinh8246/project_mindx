@@ -85,7 +85,7 @@
         <!-- main -->
         <div style=" flex-grow: 7" class="main">
             <div style="margin: 20px 0;">
-                <div class="w10"><img src="images/iconfinder_3_avatar_2754579.png" alt="" style="width: 48px; border-radius: 50%;"></div>
+                <div class="w10"><img src="images/avr_1.png" alt="" style="width: 48px; border-radius: 50%;"></div>
                 <div class="flex w75">
                     <div>
                         <div style="height: 25px;">
@@ -108,12 +108,12 @@
                 <div class="w10" style="padding: 15px 0px;">2 hours</div>
                 <div class="w5">
                         <label class="container1">
-                            <input type="checkbox" checked="checked">
+                            <input type="checkbox" >
                         </label>
                 </div>
             </div>
             <div style="margin: 20px 0;">
-                <div class="w10"><img src="images/iconfinder_3_avatar_2754579.png" alt="" style="width: 48px; border-radius: 50%;"></div>
+                <div class="w10"><img src="images/avr_3.png" alt="" style="width: 48px; border-radius: 50%;"></div>
                 <div class="flex w75">
                     <div>
                         <div style="height: 25px;">
@@ -136,13 +136,52 @@
                 <div class="w10" style="padding: 15px 0px;">2 hours</div>
                 <div class="w5">
                         <label class="container1">
-                            <input type="checkbox" checked="checked">
+                            <input type="checkbox" >
                         </label>
                 </div>
             </div>
             <div></div>
         </div>
-
+        <script>
+            const itemList = () => {
+                return `<div style="margin: 20px 0;">
+                <div class="w10"><img src="images/iconfinder_3_avatar_2754579.png" alt="" style="width: 48px; border-radius: 50%;"></div>
+                <div class="flex w75">
+                    <div>
+                        <div style="height: 25px;">
+                            <h4 class="mt0">Welcome to Vietnam</h4> 
+                        </div>
+                        <div> 
+                            <form class="ml10 fl">
+                            <button style="background-color: green; border: none; color: white;" type="button" 
+                            onclick="">Client</button>
+                            <button style="background-color: blue; border: none; color: white;" type="button" 
+                            onclick="">Work</button>
+                        </form> 
+                        </div>
+                    </div>
+                    <div>
+                        <p class="mt0" style="text-align: left;">
+                            Welcome To your dashboard. here you can manage and coordinate any activities</p>
+                    </div>
+                </div>
+                <div class="w10" style="padding: 15px 0px;">2 hours</div>
+                <div class="w5">
+                        <label class="container1">
+                            <input type="checkbox" >
+                        </label>
+                </div>
+            </div>`
+            }
+            fetch('mail.json')
+            .then((res) => {
+                return res.json()
+            }).then((data) => {
+                data.map((data) => {
+                    
+                })                
+            })
+        </script>
 </body>
 
 </html>

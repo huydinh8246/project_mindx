@@ -1,79 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>index</title>
-    <style>
-       
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="test.css">
+    <script src="mail.json"></script>
+    <script src="https://kit.fontawesome.com/e5b4206cbc.js" crossorigin="anonymous"></script>
     </style>
 </head>
 
 <body>
-    <!-- dash board -->
-    <header>
-        <div style="background-color: aqua; position: relative;">
-            <nav class="navbar">
-                <div>
-                    <span style="font-size: 30px"><i class="fas fa-ellipsis-h fl" style="padding: 6px"></i></span>
-                    <img src="" alt="avatar" style="max-width: 30px; padding: 5px; margin-left: 20px;">
-                    <div class="info" >
-                        <p>name</p>
-                        <a href="#" style="font-size: 12px;padding-bottom: 10px;">huy@mail.com</a>
-                    </div>
-                </div>
-                <h2 class="fl" style="padding: 8px;">MAIL BOX</h2>
-                <!-- setting -->
-                <div class="dropdown fr mr30">
-                    <a class="drop-btn" href="#">
-                        <span style="font-size: 15px"><i class="fas fa-sliders-h"></i></span>
-                    </a>
-                    <div class="drop-content">
-                        <div><a href="#"></a>#</div>
-                        <div><a href="#"></a>#</div>
-                        <div><a href="#"></a>#</div>
-                        <div><a href="#"></a>#</div>
-                    </div>
-                </div>
-                <!-- notice -->
-                <div class="dropdown fr">
-                    <a href="#" class="drop-btn">
-                        <span style="font-size: 15px"><i class="fas fa-bell"></i></span>
-                    </a>
-                    <div class="drop-content">
-                        <div><a href="#"></a>#</div>
-                        <div><a href="#"></a>#</div>
-                        <div><a href="#"></a>#</div>
-                        <div><a href="#"></a>#</div>
-                    </div>
-                </div>
-                <!-- friend status (online/offline) -->
-                <span class="fr"></span>
-                <!-- clear -->
-                <div class="clear"></div>
+    <div class="container">
+        <!-- nav -->
+        <div style="flex-grow: 1" class="nav">
+            <form class="block">
+                <button class="compose-button mt50" type="button" onclick="">Compose</button>
+            </form>
+            <nav class="menu">
+                <ul>
+                    <li>
+                        <div>
+                            <i class="fas fa-envelope mr10 mb10"></i>
+                            <a href="#" target="_blank">Inbox</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fas fa-star mr10 mb10"></i>
+                            <a href="#" target="_blank">Starred</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fas fa-bookmark mr10 mb10"></i>
+                            <a href="#" target="_blank">Improtant</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fas fa-bookmark mr10 mb10"></i>
+                            <a href="#" target="_blank">Sent</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fas fa-bookmark mr10 mb10"></i>
+                            <a href="#" target="_blank">Drafts</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fas fa-bookmark mr10 mb10"></i>
+                            <a href="#" target="_blank">All Mail</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fas fa-bookmark mr10 mb10"></i>
+                            <a href="#" target="_blank">Spam</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fas fa-bookmark mr10 mb10"></i>
+                            <a href="#" target="_blank">Trash</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <hr class="ml30 mr30 ">
+            <h3 class="ml30">Labels</h3>
+            <nav class="menu pl30">
+                <ul>
+                    <li><i class="fas fa-circle" style="color: yellow;"></i>
+                        <a href="#" target="_blank">Personal</a></li>
+                    <li><i class=" fas fa-circle" style="color: blue;"></i>
+                        <a href="#" target="_blank">Work</a></li>
+                    <li><i class=" fas fa-circle" style="color: red;"></i>
+                        <a href="#" target="_blank">Bussiness</a></li>
+                </ul>
             </nav>
         </div>
-    </header>
-    <!-- filter -->
-    <section class="filter">
-        
-    </section>
-    <!-- filter -->
-    <section class="contact" style="height: 500px; width: 20%; float: right ; background-color: 7EAAC5;">
-        <div>
-            <div class="contact-item">
 
+        <!-- main -->
+        <div style=" flex-grow: 7" class="main">
+            <div style="margin: 20px 0;">
+                <div class="w10"><img src="images/avr_1.png" alt="" style="width: 48px; border-radius: 50%;"></div>
+                <div class="flex w75">
+                    <div>
+                        <div style="height: 25px;">
+                            <h4 class="mt0">Welcome to Vietnam</h4> 
+                        </div>
+                        <div> 
+                            <form class="ml10 fl">
+                            <button style="background-color: green; border: none; color: white;" type="button" 
+                            onclick="">Client</button>
+                            <button style="background-color: blue; border: none; color: white;" type="button" 
+                            onclick="">Work</button>
+                        </form> 
+                        </div>
+                    </div>
+                    <div>
+                        <p class="mt0" style="text-align: left;">
+                            Welcome To your dashboard. here you can manage and coordinate any activities</p>
+                    </div>
+                </div>
+                <div class="w10" style="padding: 15px 0px;">2 hours</div>
+                <div class="w5">
+                        <label class="container1">
+                            <input type="checkbox" >
+                        </label>
+                </div>
             </div>
+            <div style="margin: 20px 0;">
+                <div class="w10"><img src="images/avr_3.png" alt="" style="width: 48px; border-radius: 50%;"></div>
+                <div class="flex w75">
+                    <div>
+                        <div style="height: 25px;">
+                            <h4 class="mt0">Welcome to Vietnam</h4> 
+                        </div>
+                        <div> 
+                            <form class="ml10 fl">
+                            <button style="background-color: green; border: none; color: white;" type="button" 
+                            onclick="">Client</button>
+                            <button style="background-color: blue; border: none; color: white;" type="button" 
+                            onclick="">Work</button>
+                        </form> 
+                        </div>
+                    </div>
+                    <div>
+                        <p class="mt0" style="text-align: left;">
+                            Welcome To your dashboard. here you can manage and coordinate any activities</p>
+                    </div>
+                </div>
+                <div class="w10" style="padding: 15px 0px;">2 hours</div>
+                <div class="w5">
+                        <label class="container1">
+                            <input type="checkbox" >
+                        </label>
+                </div>
+            </div>
+            <div></div>
         </div>
-    </section>
-    <div>
-        asdasdasd
-    </div>
-    <link rel="stylesheet" href="package/fontawesome/css/fontawesome.css">
-    <link rel="stylesheet" href="package/fontawesome/css/brands.css">
-    <link rel="stylesheet" href="package/fontawesome/css/solid.css">
+        <script>
+            const itemList = () => {
+                return `<div style="margin: 20px 0;">
+                <div class="w10"><img src="images/iconfinder_3_avatar_2754579.png" alt="" style="width: 48px; border-radius: 50%;"></div>
+                <div class="flex w75">
+                    <div>
+                        <div style="height: 25px;">
+                            <h4 class="mt0">Welcome to Vietnam</h4> 
+                        </div>
+                        <div> 
+                            <form class="ml10 fl">
+                            <button style="background-color: green; border: none; color: white;" type="button" 
+                            onclick="">Client</button>
+                            <button style="background-color: blue; border: none; color: white;" type="button" 
+                            onclick="">Work</button>
+                        </form> 
+                        </div>
+                    </div>
+                    <div>
+                        <p class="mt0" style="text-align: left;">
+                            Welcome To your dashboard. here you can manage and coordinate any activities</p>
+                    </div>
+                </div>
+                <div class="w10" style="padding: 15px 0px;">2 hours</div>
+                <div class="w5">
+                        <label class="container1">
+                            <input type="checkbox" >
+                        </label>
+                </div>
+            </div>`
+            }
+            fetch('mail.json')
+            .then((res) => {
+                return res.json()
+            }).then((data) => {
+                data.map((data) => {
+                    
+                })                
+            })
+        </script>
 </body>
 
 </html>
