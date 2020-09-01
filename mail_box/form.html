@@ -5,36 +5,231 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://kit.fontawesome.com/e5b4206cbc.js" crossorigin="anonymous"></script>
+    <style>
+        div.mail-form {
+            border: 1px solid #E3DAD9;
+            border-radius: 6px;
+            padding: 16px;
+            width: 60%;
+            margin-top: 16px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        div.mail-form {
+            position: fixed;
+            margin: 5% auto;
+            left: 0;
+            right: 0;
+            width: 600px;
+        }
+
+        .oc-3 {
+            opacity: 0.3;
+        }
+
+
+        .file-input::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+
+        .head-form {
+            padding-bottom: 5px;
+            height: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: 0.1px solid #E3DAD9;
+        }
+
+        .head-form .head-form-content p {
+            margin: 0;
+            font-size: 20px;
+            margin-top: 12px;
+            margin-left: 30px;
+        }
+
+        .head-form .head-form-close {
+            width: 50px;
+            text-align: center;
+            /* vertical-align: middle; */
+            cursor: pointer;
+        }
+
+        .form-group {
+            display: flex;
+            margin: 15px 5px;
+            position: relative;
+        }
+
+        .form-group label {
+            padding: 10px;
+            width: 65px;
+        }
+
+        .form-group input {
+            height: 34px;
+            width: 100%;
+            border: 1px solid #E3DAD9;
+            border-radius: 6px;
+        }
+
+        #lstLabel {
+            height: 34px;
+            width: 100%;
+            border: 1px solid #E3DAD9;
+            border-radius: 6px;
+        }
+
+        .form-submit {
+            display: flex;
+            justify-content: center;
+        }
+
+        .form-submit>div {
+            margin: 20px 15px;
+        }
+
+        .attachment-btn {
+            background-color: #E7EBF6;
+            border-radius: 10px;
+            border: 1px solid #E7EBF6;
+            display: inline-block;
+            cursor: pointer;
+            color: #171718;
+            font-family: Arial;
+            font-size: 15px;
+            padding: 10px 25px;
+            text-decoration: none;
+        }
+
+        .attach-form {
+            opacity: 0;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .form-submit>div .submit-btn {
+            background-color: #3C6EEB;
+            border-radius: 10px;
+            border: 1px solid #18ab29;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffffff;
+            font-family: Arial;
+            font-size: 15px;
+            padding: 10px 25px;
+            text-decoration: none;
+            /* text-shadow: 0px 1px 0px #2f6627; */
+        }
+    </style>
 </head>
 
 <body>
-    <div style="width: 500px ;padding: 0.01em 16px;margin-top: 16px;
-        margin-bottom: 16px;">
-        <form>
-            <div>
-                <label for="">TO</label>
-                <input type="text">
+    <div id='mailForm' class="mail-form">
+        <form name="mail">
+            <!-- head form -->
+            <di class="head-form">
+                <div style="flex-grow: 7" class="head-form-content">
+                    <p>Compose</p>
+                </div>
+                <div class="head-form-close">
+                    <div style="margin: 16px;">
+                        <span><i class="fas fa-times"></i></span>
+                    </div>
+                </div>
+            </di>
+            <!-- form content -->
+            <div class="form-group">
+                <label for="">To</label>
+                <input type="text" name="txtTo">
             </div>
-            <div>
-                <label for="">Form</label>
-                <input type="text">
+            <div class="form-group">
+                <label for="">Title</label>
+                <input type="text" name="txtTitle">
             </div>
-            <div>
-                <label for="">Subject</label>
-                <input type="text">
+            <div class='form-group'>
+                <label for="">Label</label>
+                <select id="lstLabel" name="ls">
+                    <option value="0">Select label:</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Work" style='background-color:white'>Work</option>
+                </select>
             </div>
-            <input class="" style="height:150px" placeholder="What's on your mind?">
+            <div class="form-group">
+                <label for="">Message</label>
+                <input class="" style="height:150px" placeholder="What's on your mind?" name="txtMessage">
+            </div>
+            <!-- attach file + submit -->
+            <div class="form-submit">
+                <div class="attachment">
+                    <button type="button" class="attachment-btn">
+                        <span><i class="fas fa-plus"></i></span>
+                        <span>attchment</span>
+                        <input type="file" class="file-input" name="files[]" multiple=""
+                            style="opacity: 0;position: absolute;z-index: -1;">
+                    </button>
+                </div>
+                <div class="submit">
+                    <button type="submit" class="submit-btn" id="btnSend">send</button>
+                </div>
+            </div>
         </form>
     </div>
+
+
+    <!-- test -->
+    <button type="button" id="form" onclick="showForm()"> asass </button>
+    <button type="button" id="testInput" onclick="mailData()"> asass </button>
     <script>
         "use strict";
+        let user = [{
+            "v1": "ham",
+            "name": "Eiryyy",
+            "message": "Go until jurong point, crazy.. Available only in bugis n great world la e buffet... Cine there got amore wat...",
+            "label": "Personal",
+            "label-color": "blue",
+            "avatar": "images/avr_1.png",
+            "important": "TRUE"
+        }]
 
-        fetch('mail.json')
-            .then((res) => {
-                return res.json()
-            }).then((data) => {
-                console.log(data)
-            })
+        function createMail(name, message, label) {
+            this.name = name;
+            this.message = message;
+            this.label = label
+        }
+
+        let formMail = document.forms.mail;
+        const showForm = () => {
+            document.getElementById('mailForm').style.display = 'block'
+            let t = document.getElementById('mailForm')
+            console.log(t.style.display.includes('block'))
+        }
+
+        const mailData = () => {
+            let txtTo = document.querySelector('input[name="txtTo"]')
+            let label = document.getElementById('lstLabel')
+            let txtTitle = document.querySelector('input[name="txtTitle"]')
+            let txtMessage = document.querySelector('input[name="txtMessage"]')
+            
+            let mail = new createMail(txtTo.value,`${txtTitle.value}. ${txtMessage.value}`, label.options[label.selectedIndex].value)
+            mail.v1 = 'to'
+            user.push(mail)
+
+            console.log(user)
+            // console.log(label.options[label.selectedIndex].value)
+            // console.log(txtMessage.value + txtTitle.value)
+        }
+
+
+        // document.getElementById('form').onclick = form()
+        // fetch('mail.json')
+        //     .then((res) => {
+        //         return res.json()
+        //     }).then((data) => {
+        //         console.log(data)
+        //     })
     </script>
 </body>
+
 </html>
