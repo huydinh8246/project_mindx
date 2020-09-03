@@ -96,7 +96,7 @@
         </div>
 
         <!-- main -->
-        <div style=" flex-grow: 7" class="main">
+        <div style=" flex-grow: 7" class="main" id="main">
             <div style="margin: 20px 0;">
                 <div class="w10"><img src="images/avr_1.png" alt="" style="width: 48px; border-radius: 50%;"></div>
                 <div class="flex w75">
@@ -229,7 +229,7 @@
             }
 
             //mail form 
-            let user = [{
+            let userLst = [{
                     "v1": "ham",
                     "name": "Eiryyy",
                     "message": "Go until jurong point, crazy.. Available only in bugis n great world la e buffet... Cine there got amore wat...",
@@ -411,6 +411,8 @@
                 },
             ]
 
+            var userHtml = []
+
             function createMail(name, message, label) {
                 this.name = name;
                 this.message = message;
@@ -436,42 +438,54 @@
             }
             // mail form
             const itemList = (data) => {
-                return `<div class="item" style="border: 1px solid black">
+                return `
                 <div style="margin: 20px 0;">
-                    <div class="w10"><img src="${data.avatar}" alt="" style="width: 48px; border-radius: 50%;"></div>
-                    <div class="flex w75">
-                        <div>
-                            <div style="height: 25px;">
-                                <h4 class="mt0">${data.name}</h4>
-                            </div>
-                            <div>
-                                <form class="ml10 fl">
-                                    <button style="background-color: ${data.labelColor}; border: none; color: white;" type="button"
-                                        onclick="">${data.label}</button>
-                                </form>
-                            </div>
+                <div class="w10"><img src="${data.avatar}" alt="" style="width: 48px; border-radius: 50%;"></div>
+                <div class="flex w75">
+                    <div>
+                        <div style="height: 25px;">
+                            <h4 class="mt0">${data.name}</h4>
                         </div>
                         <div>
-                            <p class="mt0" style="text-align: left;">
-                                ${data.message}</p>
+                            <form class="ml10 fl">
+                                <button style="background-color: ${data.labelColor}; border: none; color: black;" type="button"
+                                    onclick="">${data.label}</button>
+                            </form>
                         </div>
                     </div>
-                    <div class="w10" style="padding: 15px 0px;">2 hours</div>
-                    <div class="w5">
-                        <label class="container1">
-                            <input type="checkbox">
-                        </label>
+                    <div>
+                        <p class="mt0" style="text-align: left;">
+                            ${subString(data.message.split(' '),0,10)}</p>
                     </div>
+                </div>
+                <div class="w10" style="padding: 15px 0px;">2 hours</div>
+                <div class="w5">
+                    <label class="container1">
+                        <input type="checkbox">
+                    </label>
                 </div>
             </div>`
             }
 
-            const renderItem = () => {
-                user.map((data) => {
-                    console.log(data)
-                })
+            const renderItem = (res) => {
+                let html = res.map(data => {
+                    let dataUser = itemList(data)
+                    console.log(dataUser)
+                    userHtml.push(dataUser)
+                    return dataUser
+                }).join('')
+
+                document
+                    .querySelector('#main')
+                    .insertAdjacentHTML('afterbegin', html)
+
             }
 
+            const subString = (array,first,last) => {
+                return array.slice(first, last)
+            }
+
+            renderItem(userLst)
         </script>
 </body>
 
