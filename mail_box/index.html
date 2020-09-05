@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <!-- nav -->
-        <div style="flex-grow: 1" class="nav">
+        <div style="flex-grow: 1; background-color:#333333" class="nav">
             <img src="images/person.png" alt="" style="border-radius: 50%; margin-top: 30px;">
             <form class="block">
                 <button class="compose-button mt30" type="button" id="form" onclick="showForm()">Compose</button>
@@ -23,12 +23,6 @@
                         <div>
                             <i class="fas fa-envelope mr10 mb10"></i>
                             <a href="#" target="_blank">Inbox</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <i class="fas fa-star mr10 mb10"></i>
-                            <a href="#" target="">Starred</a>
                         </div>
                     </li>
                     <li>
@@ -69,9 +63,9 @@
                     </li>
                 </ul>
             </nav>
-            <hr class="ml30 mr30 ">
-            <h3 class="ml30">Labels</h3>
-            <nav class="menu pl30">
+            <hr class="ml30 mr30">
+            <h3 class="" style="color: #465162 ">Labels</h3>
+            <nav class="menu">
                 <ul>
                     <li>
                         <div>
@@ -94,10 +88,45 @@
                 </ul>
             </nav>
         </div>
-        
+
         <div style=" flex-grow: 7">
             <!-- filter -->
-            <div style="width: 100%; height: 100px; background-color: antiquewhite;">filter</div>
+            <div style="display: flex; width: 100%; height: 100px; background-color: antiquewhite;">
+                <div style="width: 70%; display: flex; flex-direction: column">
+                    <div class="ml30" style="text-align: left">
+                        <h1>Inbox</h1>
+                    </div>
+                    <div class="ml30">
+                        <div style="text-align: left; display: flex; flex-direction: row"   >
+                            <input type="checkbox" id="myCheck" onclick="Press()">
+                            <div style="display: flex; flex-direction: row">
+                                <div id="Trash" style="display: none;"> <i class="fas fa-trash-alt ml30"></i> </div>
+                                <div id="Spam" style="display: none"> <i class="fas fa-exclamation-circle ml30"></i>
+                                </div>
+                            </div>
+                            <script>
+                                function Press() {
+                                    let x = document.getElementById("Trash");
+                                    let y = document.getElementById("Spam")
+                                    if (x.style.display === "block" && y.style.display === "block") {
+                                        x.style.display = "none";
+                                        y.style.display = "none";
+                                    } else {
+                                        x.style.display = "block";
+                                        y.style.display = "block";
+                                    }
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-bar">
+                    <form action="">
+                        <input type="text" placeholder="Search..." name="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
             <!-- main -->
             <div class="main" id="main">
                 <div style="margin: 20px 0;">
@@ -289,7 +318,7 @@
                     </div>
                     <div>
                         <p class="mt0" style="text-align: left;">
-                            ${subString(data.message.split(' '),0,10)}</p>
+                            ${subString(data.message.split(' '), 0, 10)}</p>
                     </div>
                 </div>
                 <div class="w10" style="padding: 15px 0px;">2 hours</div>

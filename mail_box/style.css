@@ -5,6 +5,7 @@ body {
 
 a {
   text-decoration: none;
+  color: #888;
 }
 
 li {
@@ -14,7 +15,7 @@ li {
 
 .container {
   display: flex;
-  background-color: DodgerBlue;
+  background-color: whitesmoke;
 }
 
 .container>div {
@@ -23,12 +24,16 @@ li {
   text-align: center;
 }
 
+
 .compose-button {
   border-radius: 100px;
   padding: 13px 20px;
   text-align: center;
   font-weight: 500;
   text-transform: uppercase;
+  background-color: #333333;
+  color: #61C7B3;
+  border: 2px solid #61C7B3;
   /* color: #61C7B3; */
   /* border: 2px solid #61C7B3; */
 }
@@ -75,6 +80,7 @@ margin-top: 0;
 
 .menu {
   text-decoration: none;
+  color: #61C7B3;
 }
 
 .nav .menu ul {
@@ -101,7 +107,7 @@ margin-top: 0;
 
 .nav .menu ul li:hover{
 /* color: yellow; */
-background-color: #D0DCE4;
+background-color: #282d36;
 }
 .w10 {
 width: 10%;
@@ -269,3 +275,24 @@ content: ' ';
 background: rgba(0, 0, 0, .5);
 }
 /* mail form */
+.search-bar {
+  display: flex;
+  justify-content: flex-end;
+  /* float: right; */
+}
+.search-bar input[type=text] {
+  padding: 6px;
+  margin-top: 33px;
+  font-size: 17px;
+  border: none;
+}
+.search-bar button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 33px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
