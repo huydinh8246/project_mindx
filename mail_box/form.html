@@ -1,343 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="mail.json"></script>
     <script src="https://kit.fontawesome.com/e5b4206cbc.js" crossorigin="anonymous"></script>
-    <style>
-        div.mail-form {
-            border: 1px solid #E3DAD9;
-            border-radius: 6px;
-            padding: 16px;
-            width: 60%;
-            margin-top: 16px;
-            margin-bottom: 16px;
-            display: none;
-        }
-
-        div.mail-form {
-            position: relative;
-            margin: 5% auto;
-            left: 0;
-            right: 0;
-            width: 600px;
-        }
-
-        div.mail-form>form {
-            width: 600px;
-        }
-
-        .oc-3 {
-            opacity: 0.3;
-        }
-
-
-        .file-input::-webkit-file-upload-button {
-            visibility: hidden;
-        }
-
-        .head-form {
-            padding-bottom: 5px;
-            height: 50px;
-            display: flex;
-            flex-wrap: wrap;
-            border-bottom: 0.1px solid #E3DAD9;
-        }
-
-        .head-form .head-form-content p {
-            margin: 0;
-            font-size: 20px;
-            margin-top: 12px;
-            margin-left: 30px;
-        }
-
-        .head-form .head-form-close {
-            width: 50px;
-            text-align: center;
-            /* vertical-align: middle; */
-            cursor: pointer;
-        }
-
-        .form-group {
-            display: flex;
-            margin: 15px 5px;
-            position: relative;
-        }
-
-        .form-group label {
-            padding: 10px;
-            width: 65px;
-        }
-
-        .form-group input {
-            height: 34px;
-            width: 100%;
-            border: 1px solid #E3DAD9;
-            border-radius: 6px;
-        }
-
-        #lstLabel {
-            height: 34px;
-            width: 100%;
-            border: 1px solid #E3DAD9;
-            border-radius: 6px;
-        }
-
-        .form-submit {
-            display: flex;
-            justify-content: center;
-        }
-
-        .form-submit>div {
-            margin: 20px 15px;
-        }
-
-        .attachment-btn {
-            background-color: #E7EBF6;
-            border-radius: 10px;
-            border: 1px solid #E7EBF6;
-            display: inline-block;
-            cursor: pointer;
-            color: #171718;
-            font-family: Arial;
-            font-size: 15px;
-            padding: 10px 25px;
-            text-decoration: none;
-        }
-
-        .attach-form {
-            opacity: 0;
-            position: absolute;
-            z-index: -1;
-        }
-
-        .form-submit>div .submit-btn {
-            background-color: #3C6EEB;
-            border-radius: 10px;
-            border: 1px solid #18ab29;
-            display: inline-block;
-            cursor: pointer;
-            color: #ffffff;
-            font-family: Arial;
-            font-size: 15px;
-            padding: 10px 25px;
-            text-decoration: none;
-            /* text-shadow: 0px 1px 0px #2f6627; */
-        }
-
-        .blocker {
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            content: ' ';
-            background: rgba(0, 0, 0, .5);
-        }
+    <title itemprop="name">spam</title>
     </style>
 </head>
 
 <body>
-    <div id='mailForm' class="mail-form">
-        <div class="blocker" onclick="hidePopup()"></div>
-        <div style="background-color: white;position: absolute;; z-index: 1;">
-            <form name="mail">
-                <!-- head form -->
-                <div class="head-form">
-                    <div style="flex-grow: 7" class="head-form-content">
-                        <p>Compose</p>
-                    </div>
-                    <div class="head-form-close">
-                        <div style="margin: 16px;">
-                            <span><i class="fas fa-times"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <!-- form content -->
-                <div class="form-group">
-                    <label for="">To</label>
-                    <input type="text" name="txtTo">
-                </div>
-                <div class="form-group">
-                    <label for="">Title</label>
-                    <input type="text" name="txtTitle">
-                </div>
-                <div class='form-group'>
-                    <label for="">Label</label>
-                    <select id="lstLabel" name="ls">
-                        <option value="0">Select label:</option>
-                        <option value="Personal">Personal</option>
-                        <option value="Work" style='background-color:white'>Work</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="">Message</label>
-                    <input class="" style="height:150px" placeholder="What's on your mind?" name="txtMessage">
-                </div>
-                <!-- attach file + submit -->
-                <div class="form-submit">
-                    <div class="attachment">
-                        <button type="button" class="attachment-btn">
-                            <span><i class="fas fa-plus"></i></span>
-                            <span>attchment</span>
-                            <input type="file" class="file-input" name="files[]" multiple=""
-                                style="opacity: 0;position: absolute;z-index: -1;">
-                        </button>
-                    </div>
-                    <div class="submit">
-                        <button type="button" class="submit-btn" id="btnSend" onclick="mailData()">send</button>
-                    </div>
-                </div>
+    <div class="container">
+        <!-- nav -->
+        <div style="flex-grow: 1" class="nav">
+            <img src="images/person.png" alt="" style="border-radius: 50%; margin-top: 30px;">
+            <form class="block">
+                <button class="compose-button mt30" type="button" id="form" onclick="showForm()">Compose</button>
             </form>
+            <nav class="menu">
+                <ul>
+                    <li>
+                        <div>
+                            <i class="fas fa-envelope mr10 mb10"></i>
+                            <a href="#" target="_blank">Inbox</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fas fa-star mr10 mb10"></i>
+                            <a href="#" target="">Starred</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fas fa-bookmark mr10 mb10"></i>
+                            <a href="#" target="">Improtant</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fas fa-paper-plane mr10 mb10"></i>
+                            <a href="#" target="">Sent</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fas fa-exclamation-triangle mr10 mb10"></i>
+                            <a href="#" target="">Drafts</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fas fa-folder mr10 mb10"></i>
+                            <a href="#" target="">All Mail</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fas fa-exclamation-circle mr10 mb10"></i>
+                            <a href="#" target="">Spam</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fas fa-trash-alt mr10"></i>
+                            <a href="#" target="">Trash</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <hr class="ml30 mr30 ">
+            <h3 class="ml30">Labels</h3>
+            <nav class="menu pl30">
+                <ul>
+                    <li>
+                        <div>
+                            <i class="fas fa-circle mr10 mb10" style="color: yellow;"></i>
+                            <a href="#" target="_blank">Personal</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class=" fas fa-circle mr10" style="color: red;"></i>
+                            <a href="#" target="">Bussiness</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class=" fas fa-circle mr10" style="color: blue;"></i>
+                            <a href="#" target="">Work</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
         </div>
-    </div>
 
-
-    <!-- test -->
-    <button type="button" id="form" onclick="showForm()"> asass </button>
-    <button type="button" id="testInput" onclick="mailData()"> asass </button>
-
-    <!-- item -->
-    <div id="item" style="border: 1px solid black">
-        <div style="margin: 20px 0;">
-            <div class="w10"><img src="images/avr_1.png" alt="" style="width: 48px; border-radius: 50%;"></div>
-            <div class="flex w75">
-                <div>
-                    <div style="height: 25px;">
-                        <h4 class="mt0">Welcome to Vietnam</h4>
-                    </div>
-                    <div>
-                        <form class="ml10 fl">
-                            <button style="background-color: green; border: none; color: white;" type="button"
-                                onclick="">Client</button>
-                            <button style="background-color: blue; border: none; color: white;" type="button"
-                                onclick="">Work</button>
-                        </form>
-                    </div>
-                </div>
-                <div>
-                    <p class="mt0" style="text-align: left;">
-                        Welcome To your dashboard. here you can manage and coordinate any activities</p>
-                </div>
-            </div>
-            <div class="w10" style="padding: 15px 0px;">2 hours</div>
-            <div class="w5">
-                <label class="container1">
-                    <input type="checkbox">
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        "use strict";
-        let userMails = []
-
-        var userHtml = []
-
-        function createMail(name, message, label = '') {
-            // this.name = name;
-            // this.message = message;
-            // this.label = label
-            if (name != '' && message != '') {
-                const userMail = {
-                    id: Date.now(),
-                    v1: 'inbox',
-                    name: name,
-                    message: message,
-                    label: label,
-                    labelColor: labelColor(label),
-                    avatar: "images/avr_1.png",
-                    important: '',
-                }
-            };
-            userMails.push(userMail)
-            addLocalStorage(userMails)
-
-        }
-
-        let formMail = document.forms.mail;
-        const showForm = () => {
-            document.getElementById('mailForm').style.display = 'block'
-            let t = document.getElementById('mailForm')
-            console.log(t.style.display.includes('block'))
-        }
-
-        const mailData = () => {
-            let txtTo = document.querySelector('input[name="txtTo"]')
-            let label = document.getElementById('lstLabel')
-            let txtTitle = document.querySelector('input[name="txtTitle"]')
-            let txtMessage = document.querySelector('input[name="txtMessage"]')
-
-            let mail = new createMail(txtTo.value, `${txtTitle.value}. ${txtMessage.value}`, label.options[label
-                .selectedIndex].value)
-            mail.v1 = 'to'
-            user.push(mail)
-            console.log(user)
-        }
-
-        // // fetch data from file
-        // const render = () => {
-        //     fetch('mail.json')
-        //         .then((res) => {
-        //             if (!res.ok) {
-        //                 throw Error("ERROR");
-        //             }
-        //             // var data = res.json()
-        //             // console.log(data)
-        //             return res.json()
-        //         }).then((data) => {
-        //             // console.log(data)
-        //             let html = data.map(user => {
-        //                 let dataUser = renderUser(user)
-        //                 userHtml.push(dataUser)
-        //                 return dataUser
-        //             }).join('')
-        //             document
-        //                 .querySelector('#item')
-        //                 .insertAdjacentHTML('afterbegin', html)
-        //         }).catch(error => {
-        //             console.log(error)
-        //         })
-        // }
-
-        const renderItem = (res) => {
-            let html = res.map(data => {
-                let dataUser = renderUser(data)
-                // console.log(dataUser)
-                userHtml.push(dataUser)
-                return dataUser
-            }).join('')
-
-            document
-                .querySelector('#main')
-                .insertAdjacentHTML('afterbegin', html)
-
-        }
-
-        renderItem()
-
-        const renderUser = (data) => {
-            return `<div class="item" style="border: 1px solid black">
+        <div style=" flex-grow: 7">
+            <!-- filter -->
+            <div style="width: 100%; height: 100px; background-color: antiquewhite;">filter</div>
+            <!-- main -->
+            <div class="main" id="main">
                 <div style="margin: 20px 0;">
-                    <div class="w10"><img src="${data.avatar}" alt="" style="width: 48px; border-radius: 50%;"></div>
+                    <div class="w10"><img src="images/avr_1.png" alt="" style="width: 48px; border-radius: 50%;"></div>
                     <div class="flex w75">
                         <div>
                             <div style="height: 25px;">
-                                <h4 class="mt0">${data.name}</h4>
+                                <h4 class="mt0">Welcome to Vietnam</h4>
                             </div>
                             <div>
                                 <form class="ml10 fl">
-                                    <button style="background-color: ${data.labelColor}; border: none; color: white;" type="button"
-                                        onclick="">${data.label}</button>
+                                    <button style="background-color: green; border: none; color: white;" type="button"
+                                        onclick="">Client</button>
+                                    <button style="background-color: blue; border: none; color: white;" type="button"
+                                        onclick="">Work</button>
                                 </form>
                             </div>
                         </div>
                         <div>
                             <p class="mt0" style="text-align: left;">
-                                ${data.message}</p>
+                                Welcome To your dashboard. here you can manage and coordinate any activities</p>
                         </div>
                     </div>
                     <div class="w10" style="padding: 15px 0px;">2 hours</div>
@@ -347,14 +129,94 @@
                         </label>
                     </div>
                 </div>
-            </div>`
-        }
+                <div style="margin: 20px 0;">
+                    <div class="w10"><img src="images/avr_3.png" alt="" style="width: 48px; border-radius: 50%;"></div>
+                    <div class="flex w75">
+                        <div>
+                            <div style="height: 25px;">
+                                <h4 class="mt0">Welcome to Vietnam</h4>
+                            </div>
+                            <div>
+                                <form class="ml10 fl">
+                                    <button style="background-color: green; border: none; color: white;" type="button"
+                                        onclick="">Client</button>
+                                    <button style="background-color: blue; border: none; color: white;" type="button"
+                                        onclick="">Work</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="mt0" style="text-align: left;">
+                                Welcome To your dashboard. here you can manage and coordinate any activities</p>
+                        </div>
+                    </div>
+                    <div class="w10" style="padding: 15px 0px;">2 hours</div>
+                    <div class="w5">
+                        <label class="container1">
+                            <input type="checkbox">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        // add local storage
-        function addLocalStorage(data) {
-            localStorage.setItem('mail', JSON.stringify(data))
-        }
-    </script>
+        <!-- mail form -->
+        <div id='mailForm' class="mail-form">
+            <div class="blocker" onclick="hidePopup()"></div>
+            <div id="mfWrapper">
+                <form name="mail">
+                    <!-- head form -->
+                    <div class="head-form">
+                        <div style="flex-grow: 7" class="head-form-content">
+                            <p>Compose</p>
+                        </div>
+                        <div class="head-form-close">
+                            <div style="margin: 16px;" id="closeForm">
+                                <span><i class="fas fa-times"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- form content -->
+                    <div class="form-group">
+                        <label for="">To</label>
+                        <input type="text" name="txtTo">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Title</label>
+                        <input type="text" name="txtTitle">
+                    </div>
+                    <div class='form-group'>
+                        <label for="">Label</label>
+                        <select id="lstLabel" name="ls">
+                            <option value="0">Select label:</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Work" style='background-color:white'>Work</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Message</label>
+                        <input class="" style="height:150px" placeholder="What's on your mind?" name="txtMessage">
+                    </div>
+                    <!-- attach file + submit -->
+                    <div class="form-submit">
+                        <div class="attachment">
+                            <button type="button" class="attachment-btn">
+                                <span><i class="fas fa-plus"></i></span>
+                                <span>attchment</span>
+                                <input type="file" class="file-input" name="files[]" multiple=""
+                                    style="opacity: 0;position: absolute;z-index: -1;">
+                            </button>
+                        </div>
+                        <div class="submit">
+                            <button type="submit" class="submit-btn" id="btnSend">send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="js/myjs.js"></script>c
+
 </body>
 
 </html>

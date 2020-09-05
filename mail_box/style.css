@@ -125,6 +125,10 @@ float: left;
 text-align: center;
 }
 
+.main-item {
+  margin: 20px 0;
+}  
+
 nav.menu ul li i {
 margin-bottom: 10px;
 margin-right: 10px;
@@ -269,3 +273,4 @@ content: ' ';
 background: rgba(0, 0, 0, .5);
 }
 /* mail form */
+
