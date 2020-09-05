@@ -24,7 +24,8 @@
             right: 0;
             width: 600px;
         }
-        div.mail-form > form {
+
+        div.mail-form>form {
             width: 600px;
         }
 
@@ -142,7 +143,7 @@
     <div id='mailForm' class="mail-form">
         <div class="blocker" onclick="hidePopup()"></div>
         <div style="background-color: white;position: absolute;; z-index: 1;">
-            <form name="mail" >
+            <form name="mail">
                 <!-- head form -->
                 <div class="head-form">
                     <div style="flex-grow: 7" class="head-form-content">
@@ -186,7 +187,7 @@
                         </button>
                     </div>
                     <div class="submit">
-                        <button type="submit" class="submit-btn" id="btnSend">send</button>
+                        <button type="button" class="submit-btn" id="btnSend" onclick="mailData()">send</button>
                     </div>
                 </div>
             </form>
@@ -232,22 +233,29 @@
 
     <script>
         "use strict";
-        let user = [{
-            "v1": "ham",
-            "name": "Eiryyy",
-            "message": "Go until jurong point, crazy.. Available only in bugis n great world la e buffet... Cine there got amore wat...",
-            "label": "Personal",
-            "label-color": "blue",
-            "avatar": "images/avr_1.png",
-            "important": "TRUE"
-        }]
+        let userMails = []
 
         var userHtml = []
 
-        function createMail(name, message, label) {
-            this.name = name;
-            this.message = message;
-            this.label = label
+        function createMail(name, message, label = '') {
+            // this.name = name;
+            // this.message = message;
+            // this.label = label
+            if (name != '' && message != '') {
+                const userMail = {
+                    id: Date.now(),
+                    v1: 'inbox',
+                    name: name,
+                    message: message,
+                    label: label,
+                    labelColor: labelColor(label),
+                    avatar: "images/avr_1.png",
+                    important: '',
+                }
+            };
+            userMails.push(userMail)
+            addLocalStorage(userMails)
+
         }
 
         let formMail = document.forms.mail;
@@ -270,42 +278,46 @@
             console.log(user)
         }
 
-        const render = () => {
-            fetch('mail.json')
-                .then((res) => {
+        // // fetch data from file
+        // const render = () => {
+        //     fetch('mail.json')
+        //         .then((res) => {
+        //             if (!res.ok) {
+        //                 throw Error("ERROR");
+        //             }
+        //             // var data = res.json()
+        //             // console.log(data)
+        //             return res.json()
+        //         }).then((data) => {
+        //             // console.log(data)
+        //             let html = data.map(user => {
+        //                 let dataUser = renderUser(user)
+        //                 userHtml.push(dataUser)
+        //                 return dataUser
+        //             }).join('')
+        //             document
+        //                 .querySelector('#item')
+        //                 .insertAdjacentHTML('afterbegin', html)
+        //         }).catch(error => {
+        //             console.log(error)
+        //         })
+        // }
 
-                    if (!res.ok) {
-                        throw Error("ERROR");
-                    }
+        const renderItem = (res) => {
+            let html = res.map(data => {
+                let dataUser = renderUser(data)
+                // console.log(dataUser)
+                userHtml.push(dataUser)
+                return dataUser
+            }).join('')
 
-                    // var data = res.json()
-                    // console.log(data)
-                    return res.json()
-
-                }).then((data) => {
-                    // console.log(data)
-                    let html = data.map(user => {
-                        let dataUser = renderUser(user)
-                        userHtml.push(dataUser)
-                        return dataUser
-                    }).join('')
-
-                    document
-                        .querySelector('#item')
-                        .insertAdjacentHTML('afterbegin', html)
-
-                }).catch(error => {
-                    console.log(error)
-                })
+            document
+                .querySelector('#main')
+                .insertAdjacentHTML('afterbegin', html)
 
         }
 
-        window.onclick = function (event) {
-            let mailForm = document.querySelector('div.mail-form')
-            if (event.target == mailForm) {
-                mailForm.style.display = 'none'
-            }
-        }
+        renderItem()
 
         const renderUser = (data) => {
             return `<div class="item" style="border: 1px solid black">
@@ -338,7 +350,10 @@
             </div>`
         }
 
-        render()
+        // add local storage
+        function addLocalStorage(data) {
+            localStorage.setItem('mail', JSON.stringify(data))
+        }
     </script>
 </body>
 
