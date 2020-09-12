@@ -98,7 +98,7 @@
                         <h1>Inbox</h1>
                     </div>
                     <div class="ml30">
-                        <div style="text-align: left; display: flex; flex-direction: row"   >
+                        <div style="text-align: left; display: flex; flex-direction: row">
                             <input type="checkbox" id="myCheck" onclick="Press()">
                             <div style="display: flex; flex-direction: row">
                                 <div id="Trash" style="display: none;"> <i class="fas fa-trash-alt ml30"></i> </div>
@@ -131,7 +131,10 @@
             <!-- main -->
             <div class="main" id="main">
                 <div style="margin: 20px 0;">
-                    <div class="w10"><img src="images/avr_1.png" alt="" style="width: 48px; border-radius: 50%;"></div>
+                    <form class="w10">
+                        <button class="btIcon" onclick="openForm()"> <img src="images/avr_1.png" alt=""
+                                style="width: 48px; border-radius: 50%;" ></button>
+                            </form>
                     <div class="flex w75">
                         <div>
                             <div style="height: 25px;">
@@ -139,8 +142,6 @@
                             </div>
                             <div>
                                 <form class="ml10 fl">
-                                    <button style="background-color: green; border: none; color: white;" type="button"
-                                        onclick="">Client</button>
                                     <button style="background-color: blue; border: none; color: white;" type="button"
                                         onclick="">Work</button>
                                 </form>
@@ -159,7 +160,10 @@
                     </div>
                 </div>
                 <div style="margin: 20px 0;">
-                    <div class="w10"><img src="images/avr_3.png" alt="" style="width: 48px; border-radius: 50%;"></div>
+                    <form class="w10">
+                    <button class="btIcon" onclick="openForm()"> <img src="images/avr_3.png" alt=""
+                            style="width: 48px; border-radius: 50%;" ></button>
+                        </form>
                     <div class="flex w75">
                         <div>
                             <div style="height: 25px;">
@@ -167,8 +171,6 @@
                             </div>
                             <div>
                                 <form class="ml10 fl">
-                                    <button style="background-color: green; border: none; color: white;" type="button"
-                                        onclick="">Client</button>
                                     <button style="background-color: blue; border: none; color: white;" type="button"
                                         onclick="">Work</button>
                                 </form>
@@ -182,7 +184,7 @@
                     <div class="w10" style="padding: 15px 0px;">2 hours</div>
                     <div class="w5">
                         <label class="container1">
-                            <input type="checkbox" checked>
+                            <input type="checkbox">
                         </label>
                     </div>
                 </div>
@@ -219,6 +221,7 @@
                         <select id="lstLabel" name="ls">
                             <option value="0">Select label:</option>
                             <option value="Personal">Personal</option>
+                            <!-- <option value="Bussiness">Bussiness</option> -->
                             <option value="Work" style='background-color:white'>Work</option>
                         </select>
                     </div>
@@ -243,8 +246,27 @@
                 </form>
             </div>
         </div>
+        <button></button>
+        <!-- mailbox -->
+        <div id="openMassage" class="mailbox">
+            <h1 style="font-size: 50px; line-height: 40px; font-weight: 100;">Eiryyy</h1>
+            <div>
+                <div id="massage-wrapper" class="massage">
+                    <div class="message-content sent">
+                        <div class="detail">
+                            Go until jurong point, crazy.. Available only in bugis n
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function openForm() {
+              document.getElementById("openMessage").style.display = "block";
+            }
+        </script>
 
-        <script src="js/myjs.js"></script>c
+                <script src="js/myjs.js"></script>
 
 </body>
 

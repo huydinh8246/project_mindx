@@ -300,3 +300,48 @@ background: rgba(0, 0, 0, .5);
   border: none;
   cursor: pointer;
 }
+.mailbox {
+  display: none;
+  margin-bottom: 30px;
+  padding: 0;
+}
+.massage-wrapper {
+  position: absolute;
+  top: 165px;
+  bottom: 0;
+  height: auto;
+  left: 0;
+  right: 0;
+  width: auto;
+}
+.massage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.massage > .massage-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.sent {
+  padding: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.15); 
+  background: #FFF;
+  margin: 0 0 30px 0;
+  position: relative;
+}
+.detail{
+  padding-bottom: 20px;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+.btIcon {
+  background-color: white;
+  border: none;
+  color: white;
+}
