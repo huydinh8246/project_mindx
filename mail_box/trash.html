@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="mail.json"></script>
     <script src="https://kit.fontawesome.com/e5b4206cbc.js" crossorigin="anonymous"></script>
-    <title itemprop="name">inbox</title>
+    <title itemprop="name">trash</title>
     </style>
 </head>
 
@@ -59,7 +59,7 @@
                     <li>
                         <div>
                             <i class="fas fa-trash-alt mr10"></i>
-                            <a href="trash.html" target="">Trash</a>
+                            <a href="#" target="">Trash</a>
                         </div>
                     </li>
                 </ul>
@@ -112,19 +112,15 @@
                 </div>
                 <div class="search-bar">
                     <form action="">
-                        <input type="text" placeholder="Search..." id="search" onkeyup="searchKey()">
+                        <input type="text" placeholder="Search..." name="search">
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
             </div>
             <!-- main -->
             <div class="main" id="main">
-<<<<<<< HEAD
                 <div style="margin: 20px 0;">
-                    <form class="w10">
-                        <button class="btIcon" onclick="openForm()"> <img src="images/avr_1.png" alt=""
-                                style="width: 48px; border-radius: 50%;" ></button>
-                            </form>
+                    <div class="w10"><img src="images/avr_1.png" alt="" style="width: 48px; border-radius: 50%;"></div>
                     <div class="flex w75">
                         <div>
                             <div style="height: 25px;">
@@ -132,6 +128,8 @@
                             </div>
                             <div>
                                 <form class="ml10 fl">
+                                    <button style="background-color: green; border: none; color: white;" type="button"
+                                        onclick="">Client</button>
                                     <button style="background-color: blue; border: none; color: white;" type="button"
                                         onclick="">Work</button>
                                 </form>
@@ -150,10 +148,7 @@
                     </div>
                 </div>
                 <div style="margin: 20px 0;">
-                    <form class="w10">
-                    <button class="btIcon" onclick="openForm()"> <img src="images/avr_3.png" alt=""
-                            style="width: 48px; border-radius: 50%;" ></button>
-                        </form>
+                    <div class="w10"><img src="images/avr_3.png" alt="" style="width: 48px; border-radius: 50%;"></div>
                     <div class="flex w75">
                         <div>
                             <div style="height: 25px;">
@@ -161,6 +156,8 @@
                             </div>
                             <div>
                                 <form class="ml10 fl">
+                                    <button style="background-color: green; border: none; color: white;" type="button"
+                                        onclick="">Client</button>
                                     <button style="background-color: blue; border: none; color: white;" type="button"
                                         onclick="">Work</button>
                                 </form>
@@ -174,12 +171,10 @@
                     <div class="w10" style="padding: 15px 0px;">2 hours</div>
                     <div class="w5">
                         <label class="container1">
-                            <input type="checkbox">
+                            <input type="checkbox" checked>
                         </label>
                     </div>
                 </div>
-=======
->>>>>>> f8e3e69b33026e63096d96df309c89eacd40273e
             </div>
         </div>
 
@@ -213,7 +208,6 @@
                         <select id="lstLabel" name="ls">
                             <option value="0">Select label:</option>
                             <option value="Personal">Personal</option>
-                            <!-- <option value="Bussiness">Bussiness</option> -->
                             <option value="Work" style='background-color:white'>Work</option>
                         </select>
                     </div>
@@ -238,29 +232,7 @@
                 </form>
             </div>
         </div>
-        <button></button>
-        <!-- mailbox -->
-        <div id="openMassage" class="mailbox">
-            <h1 style="font-size: 50px; line-height: 40px; font-weight: 100;">Eiryyy</h1>
-            <div>
-                <div id="massage-wrapper" class="massage">
-                    <div class="message-content sent">
-                        <div class="detail">
-                            Go until jurong point, crazy.. Available only in bugis n
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script>
-            function openForm() {
-              document.getElementById("openMessage").style.display = "block";
-            }
-        </script>
 
-<<<<<<< HEAD
-                <script src="js/myjs.js"></script>
-=======
         <!--  -->
         <div id="mvTrash" class="modal" style="display: none;">
             <div class="blocker" onclick="hidetrPopup()"></div>
@@ -276,7 +248,6 @@
 
 
         <script src="js/myjs.js"></script>
->>>>>>> f8e3e69b33026e63096d96df309c89eacd40273e
 
 </body>
 

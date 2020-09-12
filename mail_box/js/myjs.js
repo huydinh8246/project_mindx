@@ -1,11 +1,34 @@
 "use strict";
 
+var parser, xmlDoc;
+  parser = new DOMParser();
+function domParse(str){
+    if(str.length > 0){
+        return parser.parseFromString(str,"text/xml");
+    }else{
+        console.log(error);
+    }
+}
+
+function domArray(selector) {
+    if (document.querySelectorAll(selector).length > 0){
+        return Array.prototype.slice.call(document.querySelectorAll(selector))
+    } else{
+        console.log(error);
+    }
+}
+
+
 let userMails = []
 var userHtml = []
 
 // pop-up
 const showForm = () => {
     document.getElementById('mailForm').style.display = 'block'
+}
+
+const showTrForm = () => {
+    document.getElementById('mvTrash').style.display = 'block'
 }
 
 document.getElementById("btnSend").onclick = () => {
@@ -19,6 +42,10 @@ document.getElementById("closeForm").onclick = () => {
 
 function hidePopup() {
     document.getElementById('mailForm').style.display = 'none'
+}
+
+function hidetrPopup() {
+    document.getElementById('mvTrash').style.display = 'none'
 }
 
 //create mail
@@ -67,7 +94,7 @@ const itemList = (data) => {
     <div class="w10" style="padding: 15px 0px;">2 hours</div>
     <div class="w5">
         <label class="container1">
-            <input type="checkbox">
+            <input type="checkbox" name='dltCheck'>
         </label>
     </div>
 </div>`
@@ -122,8 +149,6 @@ const mailData = () => {
     return [mail]
 }
 
-
-// local storage
 // add data to local storage
 function addLocalStorage(data) {
     localStorage.setItem('mail', JSON.stringify(data))
@@ -141,32 +166,93 @@ function getFromLocalStorage() {
 getFromLocalStorage()
 
 //fetch data and save to local
-// const a = (data) => {
-//     fetch(data)
-//         .then((res) => {
-//             if (!res.ok) {
-//                 throw Error("ERROR");
-//             }
-//             // var data = res.json()
-//             // console.log(data)
-//             return res.json()
-//         }).then((data) => {
-//             console.log(data)
-//             addLocalStorage(data)
-//         })
-// }
+const a = (data) => {
+    fetch(data)
+        .then((res) => {
+            if (!res.ok) {
+                throw Error("ERROR");
+            }
+            // var data = res.json()
+            // console.log(data)
+            return res.json()
+        }).then((data) => {
+            console.log(data)
+            addLocalStorage(data)
+        })
+}
 
-// delete 
-// to trash
-let mItem = Array.prototype.slice.call(document.querySelectorAll('.main-item'))
+
+let mItem = domArray('.main-item')
 mItem.map(x => x.addEventListener('click', function (event) {
-    if (event.target.type === 'checkbox' && !event.target.checked) {
+    shOption(event.target.checked)
+    if (event.target.type === 'checkbox' && event.target.checked) {
         event.target.setAttribute("checked", 'checked');
-        // console.log(event.target)
-        // console.log(event.target.checked)
-    }else{
+
+        console.log(event.target.checked)
+    } else {
         event.target.removeAttribute("checked", 'checked')
-        // console.log(event.target)
-        // console.log(event.target.checked)
     }
 }))
+
+// mv to trash
+const mvTrash = () => {
+    mItem.map(x => {
+        let chkBox = x.querySelector('input[type="checkbox"]')
+        let name = x.querySelector('h4')
+        if (chkBox.checked) {
+            userMails.map(res => {
+                if (res.name == name.innerHTML) {
+                    res.v1 = 'trash'
+                }
+            })
+            addLocalStorage(userMails)
+        }
+    })
+    window.location.reload()
+    document.getElementById('mvTrash').style.display = 'none'
+}
+
+// all check
+let chkAll = document.getElementById("myCheck")
+chkAll.onclick = () => {
+    shOption(chkAll.checked)
+    if (chkAll.checked) {
+        var checkboxes = document.getElementsByName('dltCheck');
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = true;
+        }
+    } else {
+        var checkboxes = document.getElementsByName('dltCheck');
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = false;
+        }
+    }
+}
+
+function shOption(res) {
+    let x = document.getElementById("Trash");
+    let y = document.getElementById("Spam")
+    if (res) {
+        x.style.display = "block";
+        y.style.display = "block";
+    } else {
+        x.style.display = "none";
+        y.style.display = "none";
+    }
+}
+
+// search bar
+const searchKey = () => {
+    let title, search, filter, items
+    search = document.getElementById('search')
+    filter = search.value.toLowerCase();
+    items = domArray('.main-item')
+    for (let i = 0; i < items.length; i++) {
+        title = items[i].querySelector('h4').innerHTML
+        if(title.toLowerCase().indexOf(filter) > -1){
+            items[i].style.display=''
+        }else{
+            items[i].style.display='none'
+        }    
+    }
+}

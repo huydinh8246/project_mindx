@@ -10,70 +10,58 @@
 </head>
 
 <body>
-
-    <button onclick="showPopup()">
-        Open Popup
-    </button>
-    <div class="popup">
-        <div class="blocker" onclick="hidePopup()"></div>
-        <div class="contents">
-            This is popup
-        </div>
-    </div>
-
-    <style>
-        body {
-            background: yellow;
-            text-align: center;
-        }
-
-        .popup {
-            display: none;
-        }
-
-        .popup.open {
-            display: block;
-        }
-
-        .blocker {
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            content: ' ';
-            background: rgba(0, 0, 0, .5);
-        }
-
-        .popup .contents {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 200px;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #FFF;
-
-            position: fixed;
-            top: 50vh;
-            left: 50vw;
-            transform: translate(-50%, -50%);
-        }
-    </style>
-
-    <script>
-        const popup = document.querySelector('.popup');
-
-        function showPopup() {
-            popup.classList.add('open');
-        }
-
-        function hidePopup() {
-            popup.classList.remove('open');
-        }
-    </script>
-
+    <h2>Tạo check all và uncheck all trong Javascript</h2>
+        <table border='1' cellspacing='0' cellpadding='10'>
+            <tr style="font-weight: bold">
+                <td><input type='checkbox' name='name[]' id='check_all' value='' /></td>
+                <td>Nguyễn Văn Cường</td>
+            </tr>
+            <tr style="font-weight: bold">
+                <td><input type='checkbox' name='name[]' id='check_all' value='' /></td>
+                <td>Vũ Thị Thu Tình</td>
+            </tr>
+            <tr style="font-weight: bold">
+                <td><input type='checkbox' name='name[]' id='check_all' value='' /></td>
+                <td>Nguyễn Văn Thiên</td>
+            </tr>
+            <tr style="font-weight: bold">
+                <td><input type='checkbox' name='name[]' id='check_all' value='' /></td>
+                <td>Nguyễn Thị Thanh Thu</td>
+            </tr>
+        </table>
+        <br/>
+        <br/>
+        <input type="button" id="btn1" value="Chọn hết"/>
+        <input type="button" id="btn2" value="Bỏ chọn"/>
+         
+         
+        <script language="javascript">
+ 
+            // Chức năng chọn hết
+            document.getElementById("btn1").onclick = function () 
+            {
+                // Lấy danh sách checkbox
+                var checkboxes = document.getElementsByName('name[]');
+ 
+                // Lặp và thiết lập checked
+                for (var i = 0; i < checkboxes.length; i++){
+                    checkboxes[i].checked = true;
+                }
+            };
+ 
+            // Chức năng bỏ chọn hết
+            document.getElementById("btn2").onclick = function () 
+            {
+                // Lấy danh sách checkbox
+                var checkboxes = document.getElementsByName('name[]');
+ 
+                // Lặp và thiết lập Uncheck
+                for (var i = 0; i < checkboxes.length; i++){
+                    checkboxes[i].checked = false;
+                }
+            };
+ 
+        </script>
 </body>
 
 </html>
